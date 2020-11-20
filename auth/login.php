@@ -28,10 +28,11 @@
           $dataLogin  = mysqli_fetch_assoc($sql_login);            
 
           if (mysqli_num_rows($sql_login) > 0) {
-            $_SESSION['nip']   = $dataLogin['nip'];
-            $_SESSION['nama']   = $dataLogin['nama'];
-            $_SESSION['seksi']       = $dataLogin['seksi'];
-            $_SESSION['jabatan']      = $dataLogin['jabatan'];
+            $_SESSION['nip']      = $dataLogin['nip'];
+            $_SESSION['nama']     = $dataLogin['nama'];
+            $_SESSION['seksi']    = $dataLogin['seksi'];
+            $_SESSION['jabatan']  = $dataLogin['jabatan'];
+            $_SESSION['login']    = true;
             echo "<script>window.location='".base_url('home.php')."';</script>";
 
             // echo "<pre>";

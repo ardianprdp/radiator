@@ -12,7 +12,7 @@ session_start();
 
 // local
 $conn1 = mysqli_connect('10.3.10.227', 'user', 'view', 'mpninfo_v09');
-$conn2 = mysqli_connect('10.3.10.22', 'user', '', 'db304');
+$conn2 = mysqli_connect('10.3.10.220', 'user', '', 'db304');
 if(mysqli_connect_errno()) {
     echo mysqli_connect();
 // } else {

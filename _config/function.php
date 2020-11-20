@@ -1,11 +1,11 @@
 <?php
     // koneksi
-    $conn1 = mysqli_connect('localhost', 'root', '', 'mpninfo_v09');
+    $conn1 = mysqli_connect('10.3.10.227', 'user', 'view', 'mpninfo_v09');
 
     
     // fungsi base url
     function base_url($url = null) {
-        $base_url = "http://10.3.10.22/radiator";
+        $base_url = "http://10.3.10.220/radiator";
         if($url != null) {
             return $base_url."/".$url;
         } else {
@@ -61,5 +61,18 @@
             </div>
         </div>
         ';
+    }
+
+    // Cek password apakah masih default
+    function cekPassword() {
+        global $conn1;
+        $pass = $_SESSION['nip'];
+        $sql = mysqli_query($conn1, "SELECT username, password FROM users where password = '$pass'");
+        $cek = mysqli_fetch_assoc($sql);
+
+        if(mysqli_num_rows($cek) > 0) {
+            var_dump($cek);
+        }
+        
     }
 ?>
