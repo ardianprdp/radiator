@@ -1,7 +1,7 @@
 <?php 
-   include_once('../_header.php');
-   include_once('../_sidebar.php');
-   include_once('../_config/function.php');
+   include_once('../../_header.php');
+   include_once('../../_sidebar.php');
+   include_once('../../_config/function.php');
 
    if(isset($_POST['submit'])){
 
@@ -94,11 +94,7 @@
                 <h3 class="card-title">Summary Aduan</h3> 
                   <span class="right badge badge-info">
                     s.d. tanggal 
-                    <?php
-                      $tgl = mysqli_query($conn2, "SELECT max(tgl) as tgl_terakhir from tb_pengaduan"); 
-                      $tgl_akhir = mysqli_fetch_assoc($tgl);
-                      echo $tgl_akhir['tgl_terakhir'];
-                    ?>
+                    <?php  getTglAkhirAduan() ;?>
                   </span>
               </div>
               <!-- /.card-header -->
@@ -109,8 +105,7 @@
                       <th style="width: 10px">No</th>
                       <th style="text-align: center">Kategori</th>
                       <th style="text-align: center">Jumlah Aduan</th>
-                      <th style="text-align: center; width: 300px">Progress</th>
-                      <th style="text-align: center; width: 40px"></th>
+                      <th style="text-align: center; width: 400px">Progress</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -125,6 +120,7 @@
                           count(case when status = 'selesai' then 1 else null end) as sts_selesai	
                         from
                           tb_pengaduan
+                        where not kategori =''
                         group by
                           kategori");
                       while($r = mysqli_fetch_assoc($query1)) {
@@ -144,9 +140,6 @@
                             <span class="badge bg-primary"><?= $r['sts_selesai']; ?> Selesai</span>
                           </small>
                         </td>
-                        <td><div class="btn-group btn-group-sm">
-                          <a href="#" class="btn btn-info"><i class="fas fa-search"></i></a>
-                        </div></td>
                       </tr>
 
                     <?php
@@ -156,8 +149,59 @@
               </div>
               <!-- /.card-body -->
             </div>
+
+            <!-- register aduan -->
+            <div class="card card-primary card-outline">
+              <div class="card-header">
+                
+                <h3 class="card-title"><button type="button" class="btn btn-tool" data-card-widget="collapse">
+                  <i class="fas fa-minus"></i></button>Register aduan saya</h3> 
+                <div class="card-tools">
+                  <span data-toggle="tooltip" title="<?php getAduanUser($_SESSION['nip']) ;?> Aduan" class="badge badge-primary">Total aduan saya : <?php getAduanUser($_SESSION['nip']) ;?></span>
+                  <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i>
+                  </button>
+                </div>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body p-0">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>No</th>
+                    <th>Kategori</th>
+                    <th>Detail Aduan</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php 
+                    $no = 1;
+                    $user = $_SESSION['nip'];
+                    $sql2 = mysqli_query($conn2, "SELECT * FROM tb_pengaduan WHERE nip = '$user' ORDER BY tgl DESC");
+                    while ($a = mysqli_fetch_assoc($sql2)) {
+                  ?>
+                  <tr>
+                    <td><?= $no++ ?></td>
+                    <td><?= $a['kategori'] ?></td>
+                    <td><?= $a['detail_aduan'] ?></td>
+                    <td class="text-right py-0 align-middle">
+                      <div class="btn-group btn-group-sm">
+                        <a href="#" class="btn btn-info"><i class="fas fa-eye"></i></a>
+                        <a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                      </div>
+                    </td>
+                  </tr>
+                  <?php } ?>
+                </tbody>
+              </table>
+            </div>
+
+              <!-- /.card-body -->
+            </div>
             <!-- /.card -->
-          </div>
+         </div>
+
+         
 
 
       </div>
@@ -174,5 +218,5 @@
       $('.select2').select2()
     })
   </script>
-<?php include_once('../_footer.php') ?>
+<?php include_once('../../_footer.php') ?>
 

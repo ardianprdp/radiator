@@ -1,7 +1,7 @@
 <?php
     // koneksi
     $conn1 = mysqli_connect('10.3.10.227', 'user', 'view', 'mpninfo_v09');
-
+    $conn2 = mysqli_connect('10.3.10.220', 'user', '', 'db304');
     
     // fungsi base url
     function base_url($url = null) {
@@ -73,6 +73,21 @@
         if(mysqli_num_rows($cek) > 0) {
             var_dump($cek);
         }
-        
+    }
+
+
+    // Cetak tanggal terakhir aduan
+    function getTglAkhirAduan() {
+        global $conn2;
+        $tgl = mysqli_query($conn2, "SELECT max(tgl) as tgl_terakhir from tb_pengaduan"); 
+        $tgl_akhir = mysqli_fetch_assoc($tgl);
+        echo $tgl_akhir['tgl_terakhir'];
+    }
+
+    function getAduanUser($user) {
+        global $conn2;
+        $sql = mysqli_query($conn2, "SELECT count(1) as hitung from tb_pengaduan WHERE nip = '$user'"); 
+        $aduan = mysqli_fetch_assoc($sql);
+        echo $aduan['hitung'];
     }
 ?>

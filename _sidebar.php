@@ -41,7 +41,7 @@
               </a>
             </li>
             <li class="nav-item has-treeview">
-              <a href="<?= base_url('modul/aduan.php') ?>" class="nav-link">
+              <a href="<?= base_url('modul/aduan/aduan.php') ?>" class="nav-link">
                 <i class="nav-icon fas fa-tachometer-alt"></i>
                 <p>
                   Aduan
