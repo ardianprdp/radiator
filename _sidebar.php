@@ -10,7 +10,7 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
           <div class="image">
-            <img src="<?= base_url() ;?>/_assets/images/login.jpg" class="img-circle elevation-2" alt="User Image">
+            <img src="<?= base_url(); ?>/_assets/images/login.jpg" class="img-circle elevation-2" alt="User Image">
           </div>
           <div class="info">
             <a href="#" class="d-block" style="font-size: 15px;"><?= $_SESSION['nama']; ?></a>
@@ -32,17 +32,17 @@
                 </p>
               </a>
             </li>
-            <li class="nav-item has-treeview">
+            <!-- <li class="nav-item has-treeview">
               <a href="<?= base_url('data/index.php') ?>" class="nav-link">
                 <i class="nav-icon fas fa-tachometer-alt"></i>
                 <p>
                   Portal Data
                 </p>
               </a>
-            </li>
+            </li> -->
             <li class="nav-item has-treeview">
               <a href="<?= base_url('modul/aduan/aduan.php') ?>" class="nav-link">
-                <i class="nav-icon fas fa-tachometer-alt"></i>
+                <i class="nav-icon fas fa-pencil"></i>
                 <p>
                   Aduan
                 </p>
@@ -110,25 +110,25 @@
             </li> -->
 
             <li class="nav-header">Other</li>
-              <!-- <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="nav-icon far fa-circle text-danger"></i>
                   <p class="text">About</p>
                 </a>
               </li> -->
-              <li class="nav-item">
-                <a href="log.php" class="nav-link">
-                  <i class="nav-icon far fa-circle text-warning"></i>
-                  <p>Log Update</p>
-                </a>
-              </li>
-              <!-- <li class="nav-item">
+            <li class="nav-item">
+              <a href="log.php" class="nav-link">
+                <i class="nav-icon far fa-circle text-warning"></i>
+                <p>Log Update</p>
+              </a>
+            </li>
+            <!-- <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="nav-icon far fa-circle text-info"></i>
                   <p>#</p>
                 </a>
               </li> -->
-            
+
 
           </ul>
         </nav>

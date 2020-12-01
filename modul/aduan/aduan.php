@@ -3,6 +3,31 @@
    include_once('../../_sidebar.php');
    include_once('../../_config/function.php');
 
+   if(isset($_POST['submit'])){
+
+    $tgl      = date("Y-m-d");
+    $nip      = $_SESSION['nip'];
+    $nama     = $_SESSION['nama'];
+    $seksi    = $_SESSION['seksi'];
+    $kategori = $_POST['kategori'];
+    $detail   = $_POST['detail'];
+    $sts      = 'open';
+
+    $sql="INSERT INTO tb_pengaduan (tgl, nip, nama, seksi, kategori, detail_aduan, status ) VALUES ('$tgl', '$nip', '$nama', '$seksi', '$kategori', '$detail', '$sts')";
+
+    if(!mysqli_query($conn2, $sql)) 
+    {
+        die('Error: ' . mysqli_error($conn2));
+    }
+
+    else
+    {
+        echo '<script language="javascript">';
+        echo 'alert("Aduan berhasil diinput!"); location.href="aduan.php"';
+        echo '</script>';
+    }  
+  }
+
 ?>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -23,7 +48,7 @@
                   </div>
                   <!-- /.card-header -->
                   <!-- form start -->
-                  <form role="form" method="post" action="<?php tambahAduan();?>">
+                  <form role="form" method="post" action="">
                      <div class="card-body">
                         <div class="form-group row">
                             <input type="text" class="form-control" placeholder="<?= $_SESSION['nama']; ?>" disabled>
@@ -164,8 +189,12 @@
                     <td><?= $a['detail_aduan'] ?></td>
                     <td class="text-right py-0 align-middle">
                       <div class="btn-group btn-group-sm">
-                        <a href="#" class="btn btn-info"><i class="fas fa-eye"></i></a>
-                        <a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                        <?php if($a['status'] == "selesai") {
+                          echo '<a href="#" class="btn btn-info"><i class="fas fa-eye"></i></a>';
+                        } ?>
+                        <?php if($a['status'] == "open") { 
+                          echo '<a href="hapus.php?id='.$a['id'].'" onclick="return checkDelete()" class="btn btn-danger" )><i class="fas fa-trash"></i></a>';
+                        } ?>
                       </div>
                     </td>
                   </tr>
@@ -178,10 +207,6 @@
             </div>
             <!-- /.card -->
          </div>
-
-         
-
-
       </div>
       <!-- /.row -->
   </div>
@@ -194,7 +219,11 @@
     $(function () {
       //Initialize Select2 Elements
       $('.select2').select2()
-    })
+    });
+
+    function checkDelete(){
+      return confirm('Waaahhh aku mau dihapus dong :(');
+    };
   </script>
 <?php include_once('../../_footer.php') ?>
 
