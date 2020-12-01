@@ -3,30 +3,6 @@
    include_once('../../_sidebar.php');
    include_once('../../_config/function.php');
 
-   if(isset($_POST['submit'])){
-
-      $tgl      = date("Y-m-d");
-      $nip      = $_SESSION['nip'];
-      $nama     = $_SESSION['nama'];
-      $seksi    = $_SESSION['seksi'];
-      $kategori = $_POST['kategori'];
-      $detail   = $_POST['detail'];
-      $sts      = 'open';
-
-      $sql="INSERT INTO tb_pengaduan (tgl, nip, nama, seksi, kategori, detail_aduan, status ) VALUES ('$tgl', '$nip', '$nama', '$seksi', '$kategori', '$detail', '$sts')";
-
-      if(!mysqli_query($conn2, $sql)) 
-      {
-          die('Error: ' . mysqli_error($conn2));
-      }
-
-      else
-      {
-          echo '<script language="javascript">';
-          echo 'alert("Aduan berhasil diinput!"); location.href="aduan.php"';
-          echo '</script>';
-      }  
-    }
 ?>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -40,13 +16,14 @@
             <!-- left column -->
             <div class="col-md-3">
                <!-- general form elements -->
+               <?php tampilAduan($_SESSION['seksi']);?>
                <div class="card card-primary">
                   <div class="card-header">
                      <h3 class="card-title">Input Aduan</h3>
                   </div>
                   <!-- /.card-header -->
                   <!-- form start -->
-                  <form role="form" method="post" action="aduan.php">
+                  <form role="form" method="post" action="<?php tambahAduan();?>">
                      <div class="card-body">
                         <div class="form-group row">
                             <input type="text" class="form-control" placeholder="<?= $_SESSION['nama']; ?>" disabled>
@@ -56,7 +33,7 @@
                             <select name="kategori" class="form-control select2">
                               <option selected="selected" disabled>Pilih</option>
                               <?php
-                                // query untuk menampilkan propinsi
+                                // query untuk menampilkan kategori
                                 $query = mysqli_query($conn2, "SELECT DISTINCT(kategori) FROM dim_aduan");
                                 while ($data = mysqli_fetch_assoc($query))
                                 { ?>
@@ -91,7 +68,7 @@
          <div class="col-md-9">
             <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Summary Aduan</h3> 
+                <h3 class="card-title">Summary aduan saya</h3> 
                   <span class="right badge badge-info">
                     s.d. tanggal 
                     <?php  getTglAkhirAduan() ;?>
@@ -111,6 +88,7 @@
                   <tbody>
                     <?php 
                       $no = 1;
+                      $user   = $_SESSION['nip'];
                       $query1 = mysqli_query($conn2, 
                         "SELECT
                           kategori,
@@ -120,7 +98,7 @@
                           count(case when status = 'selesai' then 1 else null end) as sts_selesai	
                         from
                           tb_pengaduan
-                        where not kategori =''
+                        where not kategori = '' and nip = '$user'
                         group by
                           kategori");
                       while($r = mysqli_fetch_assoc($query1)) {

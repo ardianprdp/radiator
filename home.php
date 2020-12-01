@@ -41,7 +41,7 @@
                 <div class="info-box-content">
                   <span class="info-box-text">Penerimaan 2020</span>
                   <span class="info-box-number">
-                    <?php echo $jml_bayar['nominal'] = number_format($jml_bayar['nominal'] / 1000000000, 2). " M"; ?> / 1,357 T
+                    <?php echo $jml_bayar['nominal'] = number_format($jml_bayar['nominal'] / 1000000000, 1) . " M"; ?> / <?php echo target(2020) ;?>
                   </span>
                 </div>
                 <!-- /.info-box-content -->
