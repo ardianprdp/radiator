@@ -1,11 +1,11 @@
 <?php
     // koneksi
-    $conn1 = mysqli_connect('10.3.10.227', 'user', 'view', 'mpninfo_v09');
-    $conn2 = mysqli_connect('10.3.10.220', 'user', '', 'db304');
+    $conn1 = mysqli_connect('localhost', 'root', '', 'mpninfo_v09');
+    $conn2 = mysqli_connect('localhost', 'root', '', 'db304 220');
     
     // fungsi base url
     function base_url($url = null) {
-        $base_url = "http://10.3.10.220/radiator";
+        $base_url = "http://localhost/radiator";
         if($url != null) {
             return $base_url."/".$url;
         } else {
@@ -89,5 +89,46 @@
         $sql = mysqli_query($conn2, "SELECT count(1) as hitung from tb_pengaduan WHERE nip = '$user'"); 
         $aduan = mysqli_fetch_assoc($sql);
         echo $aduan['hitung'];
+    }
+
+    function target($tahun) {
+        global $conn1;
+        $sql = mysqli_query($conn1, "SELECT sum(target) AS renpen FROM renpen WHERE tahun = '$tahun'");
+        $renpen = mysqli_fetch_assoc($sql);
+        return number_format($renpen['renpen'] / 1000000000, 1) . " M";
+    }
+
+    function tambahAduan() {
+        global $conn2;
+        if(isset($_POST['submit'])){
+
+            $tgl      = date("Y-m-d");
+            $nip      = $_SESSION['nip'];
+            $nama     = $_SESSION['nama'];
+            $seksi    = $_SESSION['seksi'];
+            $kategori = $_POST['kategori'];
+            $detail   = $_POST['detail'];
+            $sts      = 'open';
+      
+            $sql="INSERT INTO tb_pengaduan (tgl, nip, nama, seksi, kategori, detail_aduan, status ) VALUES ('$tgl', '$nip', '$nama', '$seksi', '$kategori', '$detail', '$sts')";
+      
+            if(!mysqli_query($conn2, $sql)) 
+            {
+                die('Error: ' . mysqli_error($conn2));
+            }
+      
+            else
+            {
+                echo '<script language="javascript">';
+                echo 'alert("Aduan berhasil diinput!"); location.href="aduan.php"';
+                echo '</script>';
+            }  
+          }
+    }
+
+    function tampilAduan($user) {
+        if($user = 'Seksi PDI') {
+            echo '<a href="regAduan.php" class="btn btn-outline-primary btn-block mb-3">Register Aduan</a>';
+        }
     }
 ?>
