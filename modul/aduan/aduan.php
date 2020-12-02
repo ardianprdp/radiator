@@ -216,11 +216,6 @@
 </div>
 <!-- /.content-wrapper -->
   <script>
-    $(function () {
-      //Initialize Select2 Elements
-      $('.select2').select2()
-    });
-
     function checkDelete(){
       return confirm('Waaahhh aku mau dihapus dong :(');
     };

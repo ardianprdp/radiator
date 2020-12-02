@@ -21,7 +21,7 @@ include_once('_sidebar.php');
 
                 <h3>
                     Kamu ndak boleh masuk sini yaa. rahasia bingiiitt..
-                    Sumonggo, <a href="index.html">bali wae... </a>
+                    Sumonggo, <a href="home.php">bali wae... </a>
                 </h3>
 
                 <form class="search-form">

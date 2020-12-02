@@ -28,6 +28,8 @@ if (
     <link rel="stylesheet" href="<?= base_url(); ?>/_assets/plugins/fontawesome-free/css/all.min.css">
     <!-- overlayScrollbars -->
     <link rel="stylesheet" href="<?= base_url(); ?>/_assets/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="<?= base_url(); ?>/_assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
     <!-- Toastr -->
     <link rel="stylesheet" href="<?= base_url(); ?>/_assets/plugins/toastr/toastr.min.css">
     <!-- Theme style -->
@@ -67,7 +69,7 @@ if (
               <a href="#" class="dropdown-item">
                 <!-- Message Start -->
                 <div class="media">
-                  <img src="_assets/dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+                  <img src="<?= base_url() ?>/_assets/dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
                   <div class="media-body">
                     <h3 class="dropdown-item-title">
                       Brad Diesel
@@ -83,7 +85,7 @@ if (
               <a href="#" class="dropdown-item">
                 <!-- Message Start -->
                 <div class="media">
-                  <img src="_assets/dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+                  <img src="<?= base_url() ?>/_assets/dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
                   <div class="media-body">
                     <h3 class="dropdown-item-title">
                       John Pierce
@@ -99,7 +101,7 @@ if (
               <a href="#" class="dropdown-item">
                 <!-- Message Start -->
                 <div class="media">
-                  <img src="_assets/dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+                  <img src="<?= base_url() ?>/_assets/dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
                   <div class="media-body">
                     <h3 class="dropdown-item-title">
                       Nora Silvester

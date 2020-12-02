@@ -25,6 +25,15 @@
     <!-- AdminLTE App -->
     <script src="<?= base_url(); ?>/_assets/dist/js/adminlte.js"></script>
 
+    <!-- DataTables -->
+    <script src="<?= base_url(); ?>/_assets/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="<?= base_url(); ?>/_assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="<?= base_url(); ?>/_assets/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="<?= base_url(); ?>/_assets/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+    <script src="<?= base_url(); ?>/_assets/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+    <script src="<?= base_url(); ?>/_assets/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="<?= base_url(); ?>/_assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+
     <!-- Select2 -->
     <script src="<?= base_url(); ?>/_assets/plugins/select2/js/select2.full.min.js"></script>
 
@@ -42,9 +51,18 @@
     <script src="<?= base_url(); ?>/_assets/plugins/jquery-mapael/maps/usa_states.min.js"></script>
     <!-- ChartJS -->
     <script src="<?= base_url(); ?>/_assets/plugins/chart.js/Chart.min.js"></script>
+    <script>
+      $(document).ready(function() {
+        $("#regAduan").DataTable({
 
-    <!-- PAGE SCRIPTS -->
-    <script src="<?= base_url(); ?>/_assets/dist/js/pages/dashboard2.js"></script>
+          dom: 'Bfrtip',
+          buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+          ]
+        });
+
+      });
+    </script>
     </body>
 
     </html>

@@ -1,16 +1,23 @@
 <?php
     // koneksi
-    $conn1 = mysqli_connect('localhost', 'root', '', 'mpninfo_v09');
-    $conn2 = mysqli_connect('localhost', 'root', '', 'db304 220');
+    $conn1 = mysqli_connect('10.3.10.227', 'user', 'view', 'mpninfo_v09');
+    $conn2 = mysqli_connect('10.3.10.220', 'root', '', 'db304');
     
     // fungsi base url
     function base_url($url = null) {
-        $base_url = "http://localhost/radiator";
+        $base_url = "http://10.3.10.220/radiator";
         if($url != null) {
             return $base_url."/".$url;
         } else {
             return $base_url;
         }
+    }
+
+    // hapus session
+    function deleteSession() {
+        session_unset();
+        session_destroy();
+        echo "<script>window.location='../index.php';</script>";
     }
     
     // Mendapatkan IP pengunjung menggunakan getenv()
@@ -98,37 +105,34 @@
         return number_format($renpen['renpen'] / 1000000000, 1) . " M";
     }
 
-    function tambahAduan() {
-        global $conn2;
-        if(isset($_POST['submit'])){
-
-            $tgl      = date("Y-m-d");
-            $nip      = $_SESSION['nip'];
-            $nama     = $_SESSION['nama'];
-            $seksi    = $_SESSION['seksi'];
-            $kategori = $_POST['kategori'];
-            $detail   = $_POST['detail'];
-            $sts      = 'open';
-      
-            $sql="INSERT INTO tb_pengaduan (tgl, nip, nama, seksi, kategori, detail_aduan, status ) VALUES ('$tgl', '$nip', '$nama', '$seksi', '$kategori', '$detail', '$sts')";
-      
-            if(!mysqli_query($conn2, $sql)) 
-            {
-                die('Error: ' . mysqli_error($conn2));
-            }
-      
-            else
-            {
-                echo '<script language="javascript">';
-                echo 'alert("Aduan berhasil diinput!"); location.href="aduan.php"';
-                echo '</script>';
-            }  
-          }
+    function tampilAduan($user) {
+        if($user == 'Seksi PDI') {
+            echo '<a href="register-aduan.php" class="btn btn-outline-primary btn-block mb-3">Register Aduan</a>';
+        }
     }
 
-    function tampilAduan($user) {
-        if($user = 'Seksi PDI') {
-            echo '<a href="regAduan.php" class="btn btn-outline-primary btn-block mb-3">Register Aduan</a>';
+    function regAduanPJ() {
+        global $conn2;
+        $no = 1;
+        $sql = mysqli_query($conn2, "SELECT
+                                        nama_pj as pj,
+                                        count(case when status = 'open' then 1 else null end) as status_open,
+                                        count(case when status = 'proses' then 1 else null end) as status_proses,
+                                        count(case when status = 'selesai' then 1 else null end) as status_selesai,
+                                        count(1) as jml
+                                    FROM
+                                        tb_pengaduan
+                                    GROUP BY
+                                        nama_pj");
+        while ($aduan = mysqli_fetch_assoc($sql)){
+            echo '<tr>
+                        <td style="text-align: center">'.$no++.'</td>
+                        <td style="text-align: center">'.$aduan['pj'].'</td>
+                        <td style="text-align: center">'.$aduan['status_open'].'</td>
+                        <td style="text-align: center">'.$aduan['status_proses'].'</td>
+                        <td style="text-align: center">'.$aduan['status_selesai'].'</td>
+                        <td style="text-align: center">'.$aduan['jml'].'</td>
+                 </tr>';
         }
     }
 ?>
