@@ -9,7 +9,7 @@
 
     // After delete redirect to Home, so that latest user list will be displayed.
     echo '<script language="javascript">';
-    echo 'alert("Huweeeeeeeeee beneran dihapus !_!"); location.href="aduan.php"';
+    echo 'alert("Huweeeeeeeeee beneran dihapus dong !_!"); location.href="aduan.php"';
     echo '</script>';
     
 ?>

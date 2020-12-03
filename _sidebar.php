@@ -42,7 +42,7 @@
             </li> -->
             <li class="nav-item has-treeview">
               <a href="<?= base_url('modul/aduan/aduan.php') ?>" class="nav-link">
-                <i class="nav-icon fas fa-pencil"></i>
+                <i class="nav-icon fas fa-bug"></i>
                 <p>
                   Aduan
                 </p>
