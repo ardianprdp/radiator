@@ -111,6 +111,13 @@ include "_config/koneksi.php";
                 </p>
               </a>
             </li>
+            <li class="nav-item has-treeview">
+              <a href="modul/pengawasan/pengawasan.php" class="nav-link">
+                <p>
+                  Pengawasan
+                </p>
+              </a>
+            </li>
             <!-- <li class="nav-item has-treeview menu">
               <a href="<?= base_url('index.php') ?>" class="nav-link">
                 <i class="nav-icon fas fa-home"></i>
