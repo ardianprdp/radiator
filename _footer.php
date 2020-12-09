@@ -51,6 +51,8 @@
     <script src="<?= base_url(); ?>/_assets/plugins/jquery-mapael/maps/usa_states.min.js"></script>
     <!-- ChartJS -->
     <script src="<?= base_url(); ?>/_assets/plugins/chart.js/Chart.min.js"></script>
+    <!-- Sweet Alert -->
+    <script src="<?= base_url(); ?>/_assets/plugins/sweetalert/sweetalert2.all.min.js"></script>
     <script>
       $(document).ready(function() {
         $("#regAduan").DataTable({

@@ -41,7 +41,7 @@
               </a>
             </li> -->
             <li class="nav-item has-treeview">
-              <a href="<?= base_url('modul/aduan/aduan.php') ?>" class="nav-link">
+              <a href="<?= base_url('modul/aduan/') ?>" class="nav-link">
                 <i class="nav-icon fas fa-bug"></i>
                 <p>
                   Aduan
@@ -118,7 +118,7 @@
                 </a>
               </li> -->
             <li class="nav-item">
-              <a href="log.php" class="nav-link">
+              <a href="<?= base_url("log.php"); ?>" class="nav-link">
                 <i class="nav-icon far fa-circle text-warning"></i>
                 <p>Log Update</p>
               </a>

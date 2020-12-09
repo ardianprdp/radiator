@@ -1,4 +1,4 @@
-  <?php include_once "_header.php" ?>
+  <?php include "_header.php" ?>
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -81,16 +81,6 @@
   </div>
   <!-- /.content-wrapper -->
 
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-    <div class="p-3">
-      <h5>Title</h5>
-      <p>Sidebar content</p>
-    </div>
-  </aside>
-  <!-- /.control-sidebar -->
 
-  <?php include_once "_footer.php" ?>
 
-  
+  <?php include "_footer.php" ?>

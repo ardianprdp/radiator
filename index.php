@@ -112,7 +112,7 @@ include "_config/koneksi.php";
               </a>
             </li>
             <li class="nav-item has-treeview">
-              <a href="modul/pengawasan/pengawasan.php" class="nav-link">
+              <a href="modul/pengawasan" class="nav-link">
                 <p>
                   Pengawasan
                 </p>

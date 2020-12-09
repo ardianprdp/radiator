@@ -1,55 +1,70 @@
 <?php
-    // koneksi
-    $conn1 = mysqli_connect('10.3.10.227', 'user', 'view', 'mpninfo_v09');
-    $conn2 = mysqli_connect('10.3.10.220', 'root', '', 'db304');
-    
-    // fungsi base url
-    function base_url($url = null) {
-        $base_url = "http://10.3.10.220/radiator";
-        if($url != null) {
-            return $base_url."/".$url;
-        } else {
-            return $base_url;
-        }
-    }
+// koneksi dikantor
+// $conn1 = mysqli_connect('10.3.10.227', 'user', 'view', 'mpninfo_v09');
+// $conn2 = mysqli_connect('10.3.10.220', 'root', '', 'db304');
 
-    // hapus session
-    function deleteSession() {
-        session_unset();
-        session_destroy();
-        echo "<script>window.location='../index.php';</script>";
+// koneksi dikantor
+$conn1 = mysqli_connect('localhost', 'root', '', 'mpninfo_v09');
+$conn2 = mysqli_connect('localhost', 'root', '', 'db304');
+
+// fungsi base url
+function base_url($url = null)
+{
+    // $base_url = "http://10.3.10.220/radiator";
+    $base_url = "http://localhost/radiator";
+    if ($url != null) {
+        return $base_url . "/" . $url;
+    } else {
+        return $base_url;
     }
-    
-    // Mendapatkan IP pengunjung menggunakan getenv()
-    function get_client_ip() {
-        $ipaddress = '';
-        if (getenv('HTTP_CLIENT_IP'))
-            $ipaddress = getenv('HTTP_CLIENT_IP');
-        else if(getenv('HTTP_X_FORWARDED_FOR'))
-            $ipaddress = getenv('HTTP_X_FORWARDED_FOR');
-        else if(getenv('HTTP_X_FORWARDED'))
-            $ipaddress = getenv('HTTP_X_FORWARDED');
-        else if(getenv('HTTP_FORWARDED_FOR'))
-            $ipaddress = getenv('HTTP_FORWARDED_FOR');
-        else if(getenv('HTTP_FORWARDED'))
+}
+
+// hapus session
+function deleteSession()
+{
+    session_unset();
+    session_destroy();
+    echo "<script>window.location='../index.php';</script>";
+}
+
+// Mendapatkan IP pengunjung menggunakan getenv()
+function get_client_ip()
+{
+    $ipaddress = '';
+    if (getenv('HTTP_CLIENT_IP'))
+        $ipaddress = getenv('HTTP_CLIENT_IP');
+    else if (getenv('HTTP_X_FORWARDED_FOR'))
+        $ipaddress = getenv('HTTP_X_FORWARDED_FOR');
+    else if (getenv('HTTP_X_FORWARDED'))
+        $ipaddress = getenv('HTTP_X_FORWARDED');
+    else if (getenv('HTTP_FORWARDED_FOR'))
+        $ipaddress = getenv('HTTP_FORWARDED_FOR');
+    else if (getenv('HTTP_FORWARDED'))
         $ipaddress = getenv('HTTP_FORWARDED');
-        else if(getenv('REMOTE_ADDR'))
-            $ipaddress = getenv('REMOTE_ADDR');
-        else
-            $ipaddress = 'IP tidak dikenali';
-        return $ipaddress;
-    }
+    else if (getenv('REMOTE_ADDR'))
+        $ipaddress = getenv('REMOTE_ADDR');
+    else
+        $ipaddress = 'IP tidak dikenali';
+    return $ipaddress;
+}
 
-    // Menghitung seluruh pegawai
-    function getAllPegawai() {
-        global $conn1;
-        $sql = mysqli_query($conn1, "SELECT nama as jml FROM pegawai WHERE tahun = 2020");
-        return $sql -> num_rows;
-    }
+// aktifkan menu
+function menu($title, $sidebar)
+{
+}
+
+// Menghitung seluruh pegawai
+function getAllPegawai()
+{
+    global $conn1;
+    $sql = mysqli_query($conn1, "SELECT nama as jml FROM pegawai WHERE tahun = 2020");
+    return $sql->num_rows;
+}
 
 
-    function popup() {
-        echo '
+function popup()
+{
+    echo '
         <div id="myModal" class="modal fade" role="dialog">
             <div class="modal-dialog">
                 <!-- Modal content-->
@@ -68,71 +83,25 @@
             </div>
         </div>
         ';
+}
+
+// Cek password apakah masih default
+function cekPassword()
+{
+    global $conn1;
+    $pass = $_SESSION['nip'];
+    $sql = mysqli_query($conn1, "SELECT username, password FROM users where password = '$pass'");
+    $cek = mysqli_fetch_assoc($sql);
+
+    if (mysqli_num_rows($cek) > 0) {
+        var_dump($cek);
     }
+}
 
-    // Cek password apakah masih default
-    function cekPassword() {
-        global $conn1;
-        $pass = $_SESSION['nip'];
-        $sql = mysqli_query($conn1, "SELECT username, password FROM users where password = '$pass'");
-        $cek = mysqli_fetch_assoc($sql);
-
-        if(mysqli_num_rows($cek) > 0) {
-            var_dump($cek);
-        }
-    }
-
-
-    // Cetak tanggal terakhir aduan
-    function getTglAkhirAduan() {
-        global $conn2;
-        $tgl = mysqli_query($conn2, "SELECT max(tgl) as tgl_terakhir from tb_pengaduan"); 
-        $tgl_akhir = mysqli_fetch_assoc($tgl);
-        echo $tgl_akhir['tgl_terakhir'];
-    }
-
-    function getAduanUser($user) {
-        global $conn2;
-        $sql = mysqli_query($conn2, "SELECT count(1) as hitung from tb_pengaduan WHERE nip = '$user'"); 
-        $aduan = mysqli_fetch_assoc($sql);
-        echo $aduan['hitung'];
-    }
-
-    function target($tahun) {
-        global $conn1;
-        $sql = mysqli_query($conn1, "SELECT sum(target) AS renpen FROM renpen WHERE tahun = '$tahun'");
-        $renpen = mysqli_fetch_assoc($sql);
-        return number_format($renpen['renpen'] / 1000000000, 1) . " M";
-    }
-
-    function tampilAduan($user) {
-        if($user == 'Seksi PDI') {
-            echo '<a href="register-aduan.php" class="btn btn-outline-primary btn-block mb-3">Register Aduan</a>';
-        }
-    }
-
-    function regAduanPJ() {
-        global $conn2;
-        $no = 1;
-        $sql = mysqli_query($conn2, "SELECT
-                                        nama_pj as pj,
-                                        count(case when status = 'open' then 1 else null end) as status_open,
-                                        count(case when status = 'proses' then 1 else null end) as status_proses,
-                                        count(case when status = 'selesai' then 1 else null end) as status_selesai,
-                                        count(1) as jml
-                                    FROM
-                                        tb_pengaduan
-                                    GROUP BY
-                                        nama_pj");
-        while ($aduan = mysqli_fetch_assoc($sql)){
-            echo '<tr>
-                        <td style="text-align: center">'.$no++.'</td>
-                        <td style="text-align: center">'.$aduan['pj'].'</td>
-                        <td style="text-align: center">'.$aduan['status_open'].'</td>
-                        <td style="text-align: center">'.$aduan['status_proses'].'</td>
-                        <td style="text-align: center">'.$aduan['status_selesai'].'</td>
-                        <td style="text-align: center">'.$aduan['jml'].'</td>
-                 </tr>';
-        }
-    }
-?>
+function target($tahun)
+{
+    global $conn1;
+    $sql = mysqli_query($conn1, "SELECT sum(target) AS renpen FROM renpen WHERE tahun = '$tahun'");
+    $renpen = mysqli_fetch_assoc($sql);
+    return number_format($renpen['renpen'] / 1000000000, 1) . " M";
+}

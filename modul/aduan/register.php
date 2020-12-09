@@ -15,7 +15,7 @@ cekUser($_SESSION['seksi']);
    <!-- Main content -->
    <section class="content">
       <div class="container-fluid">
-         <a href="aduan.php" class="btn btn-md btn-outline-primary btn-block mb-3 md">Kembali</a>
+         <a href="index.php" class="btn btn-md btn-outline-primary btn-block mb-3 md">Kembali</a>
          <div class="row">
             <div class="col-md-12">
                <div class="card">
