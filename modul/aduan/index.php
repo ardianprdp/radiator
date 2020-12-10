@@ -1,7 +1,6 @@
 <?php
 include_once('../../_header.php');
 include_once('../../_sidebar.php');
-include_once('../../_config/function.php');
 include_once('../../_config/function-aduan.php');
 
 
@@ -164,18 +163,31 @@ include_once('../../_config/function-aduan.php');
                   ?>
                     <tr>
                       <td>
-                      <?php if ($a['status'] == "selesai") {
+                        <?php switch ($a['status']) {
+                          case "selesai":
                             echo '<i class="fas fa-check"></i></a>';
-                          } ?>
+                            break;
+                          case "proses":
+                            echo '<i class="fas fa-spinner"></i></a>';
+                            break;
+                          default:
+                            echo '<i class="fas fa-minus"></i></a>';
+                        } ?>
 
-                      </td>                          
-                      <td style=""><?= $a['register'] ?></td>
+                      </td>
+                      <td>
+                        <?php if ($a['status'] == "selesai") {
+                          echo '<a style="text-decoration: underline;" href="aduan.php?id=' . $a["id"] . '">' . $a['register'] . '</a>';
+                        } else {
+                          echo $a['register'];
+                        } ?>
+                      </td>
                       <td><?= $a['kategori'] ?></td>
                       <td><?= $a['detail_aduan'] ?></td>
                       <td class="text-right py-0 align-middle">
                         <div class="btn-group btn-group-sm">
-                          <?php if ($a['status'] == "open") {
-                            echo '<a href="aduan.php?id=' . $a['id'] . '" class="btn btn-info"><i class="fas fa-eye"></i></a>';
+                          <?php if ($a['status'] != "selesai") {
+                            echo '<a href="aduan.php?id=' . $a['id'] . '" class="btn btn-info"><i class="fas fa-edit"></i></a>';
                           } ?>
                           <?php if ($a['status'] == "open") {
                             echo '<a href="hapus.php?id=' . $a['id'] . '" onclick="return checkDelete()" class="btn btn-danger" )><i class="fas fa-trash"></i></a>';

@@ -52,7 +52,7 @@ cekUser($_SESSION['seksi']);
                <table id="regAduan" class="table table-bordered table-striped">
                   <thead>
                      <tr>
-                        <th>No</th>
+                        <th>Register</th>
                         <th>Tanggal</th>
                         <th>User</th>
                         <th>Detail Aduan</th>
