@@ -1,5 +1,7 @@
 <?php
 include "../../_config/koneksi.php";
+inputLog($_SESSION['nip'], $_SESSION['nama'], $_SESSION['seksi'], "TAMBAH", "INPUT ADUAN", $_SERVER["REMOTE_ADDR"]);
+
 
 if (isset($_POST['kategori']) && ($_POST['detail'])) {
 

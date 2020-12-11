@@ -1,5 +1,7 @@
 <?php
 include_once('../../_config/koneksi.php');
+inputLog($_SESSION['nip'], $_SESSION['nama'], $_SESSION['seksi'], "UPDATE", "UPDATE ADUAN", $_SERVER["REMOTE_ADDR"]);
+
 
 if (isset($_POST['pj']) && ($_POST['solusi']) && ($_POST['status'])) {
     global $conn2;

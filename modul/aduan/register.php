@@ -4,6 +4,9 @@ include_once('../../_sidebar.php');
 include_once('../../_config/function.php');
 include_once('../../_config/function-aduan.php');
 
+inputLog($_SESSION['nip'], $_SESSION['nama'], $_SESSION['seksi'], "OPEN", "REGISTER ADUAN", $_SERVER["REMOTE_ADDR"]);
+
+
 cekUser($_SESSION['seksi']);
 ?>
 

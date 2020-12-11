@@ -1,6 +1,9 @@
 <?php
 include_once('_header.php');
 include_once('_sidebar.php');
+
+inputLog($_SESSION['nip'], $_SESSION['nama'], $_SESSION['seksi'], "LOGIN", "LOGIN WEB RADIATOR", $_SERVER["REMOTE_ADDR"]);
+
 ?>
 
 <!-- Jumlah MPN 2020 -->

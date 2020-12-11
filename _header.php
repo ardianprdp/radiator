@@ -55,7 +55,7 @@ if (
           </li>
         </ul>
 
-        <marquee behavior="scroll" direction="left">Penderitaan membuatku semakin kuat dan berkembang! ~ <i>anonim</i></marquee>
+        <!-- <marquee behavior="scroll" direction="left">Penderitaan membuatku semakin kuat dan berkembang! ~ <i>anonim</i></marquee> -->
 
         <!-- Right navbar links -->
       </nav>

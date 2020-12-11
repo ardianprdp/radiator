@@ -4,6 +4,9 @@ include_once('../../_sidebar.php');
 include_once('../../_config/function.php');
 include_once('../../_config/function-aduan.php');
 
+inputLog($_SESSION['nip'], $_SESSION['nama'], $_SESSION['seksi'], "OPEN", "BUKA DETAIL ADUAN", $_SERVER["REMOTE_ADDR"]);
+
+
 $id = $_GET['id'];
 $sql = mysqli_query($conn2, "SELECT * FROM tb_pengaduan WHERE id = '$id'");
 $ngadu = mysqli_fetch_assoc($sql);
@@ -85,6 +88,10 @@ $ngadu = mysqli_fetch_assoc($sql);
                                 <div class="form-group">
                                     <input type="text" hidden name="id" value="<?= $id ?>">
 
+                                    <label for="inputStatus">Tgl Proses</label>
+                                    <input class="form-control" disabled value="<?= $ngadu['tgl_selesai'] ?>">
+                                </div>
+                                <div class="form-group">
                                     <label for="inputStatus">OC / Penanggung Jawab</label>
                                     <select name="pj" class="form-control custom-select">
                                         <option selected disabled>Pilih</option>
@@ -93,7 +100,7 @@ $ngadu = mysqli_fetch_assoc($sql);
                                 </div>
                                 <div class="form-group">
                                     <label for="inputDescription">Solusi Permasalahan</label>
-                                    <textarea class="form-control" name="solusi" rows="4" placeholder="isi solusi permasalahan"></textarea>
+                                    <textarea class="form-control" name="solusi" rows="4" placeholder="isi solusi permasalahan"><?= $ngadu['solusi']; ?></textarea>
                                 </div>
                                 <div class="form-group">
                                     <label for="inputStatus">Status</label>
@@ -106,38 +113,6 @@ $ngadu = mysqli_fetch_assoc($sql);
                                 <button type="submit" name="update" class="btn btn-primary float-right">Simpan </button>
                             </div>
                         </form>
-                        <!-- /.card-body -->
-                    </div>
-                    <!-- /.card -->
-                </div>
-            <?php  } ?>
-            <?php if ($ngadu['status'] == 'selesai') { ?>
-                <div class="col-md-6">
-                    <div class="card card-primary">
-                        <div class="card-header">
-                            <h3 class="card-title">Tindaklanjut Aduan</h3>
-
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
-                                    <i class="fas fa-minus"></i></button>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <div class="form-group">
-                                <label>Tgl Proses</label>
-                                <input disabled class="form-control" value="<?= $ngadu['tgl_selesai'] ?>">
-                            </div>
-                            <div class="form-group">
-                                <label>OC / Penanggung Jawab</label>
-                                <input disabled class="form-control" value="<?= $ngadu['nip_pj'] ?> - <?= $ngadu['nama_pj'] ?>">
-                            </div>
-                            <div class="form-group">
-                                <label>Solusi Permasalahan</label>
-                                <textarea type="text" disabled class="form-control" rows="5"><?= $ngadu['solusi'] ?></textarea>
-                            </div>
-
-
-                        </div>
                         <!-- /.card-body -->
                     </div>
                     <!-- /.card -->

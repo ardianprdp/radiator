@@ -1,5 +1,7 @@
 <?php
 include "_config/koneksi.php";
+inputLog(null, null, null, "OPEN", "BUKA WEB RADIATOR", $_SERVER["REMOTE_ADDR"]);
+
 ?>
 
 <!DOCTYPE html>
@@ -52,7 +54,7 @@ include "_config/koneksi.php";
         </div>
       </form> -->
 
-      <marquee behavior="scroll" direction="left">Penderitaan membuatku semakin kuat dan berkembang! ~ <i>anonim</i></marquee>
+      <!-- <marquee behavior="scroll" direction="left">Penderitaan membuatku semakin kuat dan berkembang! ~ <i>anonim</i></marquee> -->
 
 
       <!-- Right navbar links -->

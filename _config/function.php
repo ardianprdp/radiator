@@ -105,3 +105,16 @@ function target($tahun)
     $renpen = mysqli_fetch_assoc($sql);
     return number_format($renpen['renpen'] / 1000000000, 1) . " M";
 }
+
+// input log
+function inputLog($nip, $nama, $seksi, $kegiatan, $keterangan, $ipaddress)
+{
+    global $conn2;
+    date_default_timezone_set('Asia/Jakarta');
+    $date = date("Y-m-d H:i:s");
+
+    $sql = "INSERT INTO log (date, nip, nama, seksi, kegiatan, keterangan, ipaddress) VALUES ('$date', '$nip', '$nama', '$seksi', '$kegiatan', '$keterangan', '$ipaddress')";
+
+    if (mysqli_query($conn2, $sql)) {
+    };
+}
