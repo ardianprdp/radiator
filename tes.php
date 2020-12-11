@@ -18,6 +18,8 @@ include "_config/function-aduan.php";
   <button class="second">Title and Text</button>
   <button class="third">Title, Text and Icon</button>
 
+  <br>
+  <?php echo $_SERVER['AUTH_USER'];?>
   <!-- Sweet Alert -->
   <script src="<?= base_url(); ?>/_assets/plugins/sweetalert/sweetalert2.all.min.js"></script>
 
