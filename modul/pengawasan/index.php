@@ -1,4 +1,7 @@
-  <?php include "_header.php" ?>
+  <?php
+  include "_header.php";
+  // inputLog($_SESSION['nip'], $_SESSION['nama'], $_SESSION['seksi'], "OPEN", "BUKA MODUL PENGAWASAN", $_SERVER["REMOTE_ADDR"]);
+  ?>
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -7,7 +10,7 @@
       <div class="container">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark"> Top Navigation <small>Example 3.0</small></h1>
+            <h1 class="m-0 text-dark"> Dashboard Pengawasan</h1>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
