@@ -16,6 +16,13 @@ inputLog($_SESSION['nip'], $_SESSION['nama'], $_SESSION['seksi'], "OPEN", "MODUL
     <div class="container-fluid">
       <!-- Info boxes -->
       <div class="row">
+        <div class="col-md-12">
+          <div class="callout callout-info">
+            <h5>Perhatian!</h5>
+            <p>Aduan yang diinput pada form dibawah akan segera ditindaklanjuti.
+              <br>Apabila terdapat permasalahan yang <span class="badge badge-danger"><b>Urgent</b></span> harap disampaikan secara langsung untuk dapat ditangani. Terima kasih... :D</p>
+          </div>
+        </div>
         <!-- left column -->
         <div class="col-md-3">
           <!-- general form elements -->

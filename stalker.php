@@ -24,17 +24,15 @@ include_once('_sidebar.php');
                     Sumonggo, <a href="home.php">bali wae... </a>
                 </h3>
 
-                <form class="search-form">
-                    <div class="input-group">
-                        <input type="text" name="search" class="form-control" placeholder="Search">
+                <div class="input-group">
+                    <input type="text" name="search" class="form-control" placeholder="ini tidak berfungsi">
 
-                        <div class="input-group-append">
-                            <button type="submit" name="submit" class="btn btn-warning"><i class="fas fa-search"></i>
-                            </button>
-                        </div>
+                    <div class="input-group-append">
+                        <button type="submit" name="submit" class="btn btn-warning"><i class="fas fa-search"></i>
+                        </button>
                     </div>
-                    <!-- /.input-group -->
-                </form>
+                </div>
+                <!-- /.input-group -->
             </div>
             <!-- /.error-content -->
         </div>

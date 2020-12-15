@@ -19,7 +19,7 @@
                   while ($ver = mysqli_fetch_assoc($versi)) { ?>
                     <!-- timeline time label -->
                     <div class="time-label">
-                      <span class="bg-blue"><?= $ver['versi']; ?></span>
+                      <span class="bg-blue">versi <?= $ver['versi']; ?></span>
                     </div>
                     <!-- /.timeline-label -->
                     <!-- timeline item -->
@@ -68,7 +68,7 @@
         <strong>Copyright &copy; 2020 <a href="#">Kerang Ajaib</a>.</strong>
         All rights reserved.
         <div class="float-right d-none d-sm-inline-block">
-          <b><a href="" data-toggle="modal" data-target="#modalVersion"> Version</b> <?= getVersi();?> </a>
+          <b><a href="" data-toggle="modal" data-target="#modalVersion"> Version</b> <?= getVersi(); ?> </a>
         </div>
       </footer>
       </div>

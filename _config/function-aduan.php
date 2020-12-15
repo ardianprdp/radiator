@@ -7,14 +7,6 @@
 $conn1 = mysqli_connect('localhost', 'root', '', 'mpninfo_v09');
 $conn2 = mysqli_connect('localhost', 'root', '', 'db304');
 
-function cekUser($user)
-{
-    global $conn1;
-    if ($user !== "Seksi PDI") {
-        echo "<script>window.location='../../stalker.php';</script>";
-    }
-}
-
 function regAduan()
 {
     global $conn2;

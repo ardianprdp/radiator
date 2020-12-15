@@ -13,9 +13,9 @@ session_start();
 // local
 $conn1 = mysqli_connect('localhost', 'root', '', 'mpninfo_v09');
 $conn2 = mysqli_connect('localhost', 'root', '', 'db304');
-if(mysqli_connect_errno()) {
+if (mysqli_connect_errno()) {
     echo mysqli_connect();
-// } else {
-//     echo "koneksi berhasil!";
+    // } else {
+    //     echo "koneksi berhasil!";
 
 }

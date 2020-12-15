@@ -156,3 +156,12 @@ function delok($data)
     print_r($data);
     echo "</pre>";
 }
+
+// cek user harus PDI
+function cekUser($user)
+{
+    global $conn1;
+    if ($user !== "Seksi PDI") {
+        echo "<script>window.location='" . base_url('stalker.php') . "';</script>";
+    }
+}

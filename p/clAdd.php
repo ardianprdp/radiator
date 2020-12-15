@@ -6,7 +6,7 @@ include "../_config/koneksi.php";
 // echo $_POST['detail'];
 // die;
 
-if(isset($_POST['versi']) && ($_POST['update']) && ($_POST['detail']) && ($_POST['developer'])) {
+if (isset($_POST['versi']) && ($_POST['update']) && ($_POST['detail']) && ($_POST['developer'])) {
     global $conn2;
     date_default_timezone_set('Asia/Jakarta');
 
@@ -20,7 +20,7 @@ if(isset($_POST['versi']) && ($_POST['update']) && ($_POST['detail']) && ($_POST
 
     $sql = "INSERT INTO changelog (versi, tgl, upd, detail, dev, nip, nama) VALUES ('$versi', '$tgl', '$upd', '$detail', '$developer', '$nip', '$nama')";
 
-    if(mysqli_query($conn2, $sql)) {
+    if (mysqli_query($conn2, $sql)) {
         header("Location: admin.php");
     } else {
         echo 'gagal cok!!!!!';

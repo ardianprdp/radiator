@@ -4,6 +4,7 @@ include_once('../_sidebar.php');
 
 inputLog($_SESSION['nip'], $_SESSION['nama'], $_SESSION['seksi'], "OPEN", "BUKA MENU ADMIN", $_SERVER["REMOTE_ADDR"]);
 
+cekUser($_SESSION['seksi']);
 ?>
 
 
@@ -57,7 +58,7 @@ inputLog($_SESSION['nip'], $_SESSION['nama'], $_SESSION['seksi'], "OPEN", "BUKA 
                             <div class="form-group row">
                               <label class="col-sm-4 col-form-label">Developer</label>
                               <div class="col-sm-8">
-                                <input type="text" name="developer" class="form-control" placeholder="nama pengembang" value="<?= $_SESSION['nip'] == '815101289' ? 'ardianprdp' : '';?>">
+                                <input type="text" name="developer" class="form-control" placeholder="nama pengembang" value="<?= $_SESSION['nip'] == '815101289' ? 'ardianprdp' : ''; ?>">
                               </div>
                             </div>
                             <hr>
