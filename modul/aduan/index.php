@@ -9,8 +9,7 @@ inputLog($_SESSION['nip'], $_SESSION['nama'], $_SESSION['seksi'], "OPEN", "MODUL
 ?>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
-  <div class="content-header">
-  </div>
+  <br>
   <!-- Main content -->
   <section class="content">
     <div class="container-fluid">
@@ -205,6 +204,50 @@ inputLog($_SESSION['nip'], $_SESSION['nama'], $_SESSION['seksi'], "OPEN", "MODUL
                       </td>
                     </tr>
                   <?php } ?>
+
+                  <!-- ini khusus aduan open -->
+                  <?php if ($_SESSION['seksi'] == 'Seksi PDI') {
+                  $no = 1;
+                  $sql_open = mysqli_query($conn2, "SELECT * FROM tb_pengaduan WHERE status = 'open' ORDER BY id DESC");
+                  while ($b = mysqli_fetch_assoc($sql_open)) {
+                  ?>
+                    <tr>
+                      <td>
+                        <?php switch ($b['status']) {
+                          case "selesai":
+                            echo '<i class="fas fa-check"></i></a>';
+                            break;
+                          case "proses":
+                            echo '<i class="fas fa-spinner"></i></a>';
+                            break;
+                          default:
+                            echo '<i class="fas fa-minus"></i></a>';
+                        } ?>
+
+                      </td>
+                      <td>
+                        <?php if ($b['status'] == "selesai") {
+                          echo '<a style="text-decoration: underline;" href="aduan.php?id=' . $b["id"] . '">' . $b['register'] . '</a>';
+                        } else {
+                          echo $b['register'];
+                        } ?>
+                      </td>
+                      <td><?= $b['kategori'] ?></td>
+                      <td><?= $b['detail_aduan'] ?></td>
+                      <td class="text-right py-0 align-middle">
+                        <div class="btn-group btn-group-sm">
+                          <?php if ($b['status'] != "selesai") {
+                            echo '<a href="aduan.php?id=' . $b['id'] . '" class="btn btn-info"><i class="fas fa-edit"></i></a>';
+                          } ?>
+                          <?php if ($b['status'] == "open") {
+                            echo '<a href="hapus.php?id=' . $b['id'] . '" onclick="return checkDelete()" class="btn btn-danger" )><i class="fas fa-trash"></i></a>';
+                          } ?>
+                        </div>
+                      </td>
+                    </tr>
+                  <?php } } ?>
+
+
                 </tbody>
               </table>
             </div>

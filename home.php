@@ -6,12 +6,6 @@ inputLog(null, null, null, "OPEN", "BUKA/LOGIN WEB RADIATOR", $_SERVER["REMOTE_A
 
 ?>
 
-<!-- Jumlah MPN 2020 -->
-<?php $sql = mysqli_query($conn1, "SELECT SUM(nominal) as nominal FROM mpn WHERE tahunbayar = 2020");
-$jml_bayar = mysqli_fetch_assoc($sql);
-?>
-
-
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
@@ -44,7 +38,7 @@ $jml_bayar = mysqli_fetch_assoc($sql);
             <div class="info-box-content">
               <span class="info-box-text">Penerimaan 2020</span>
               <span class="info-box-number">
-                <?php echo $jml_bayar['nominal'] = number_format($jml_bayar['nominal'] / 1000000000, 1) . " M"; ?> / <?php echo target(2020); ?>
+                <?= penerimaan(2020); ?> / <?php echo target(2020); ?>
               </span>
             </div>
             <!-- /.info-box-content -->
