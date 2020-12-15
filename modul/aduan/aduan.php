@@ -52,7 +52,7 @@ $ngadu = mysqli_fetch_assoc($sql);
                         </div>
                         <div class="form-group">
                             <label>Detail Aduan</label>
-                            <textarea type="text" disabled class="form-control" rows="5"><?= $ngadu['detail_aduan'] ?></textarea>
+                            <textarea type="text" disabled class="form-control" rows="4"><?= $ngadu['detail_aduan'] ?></textarea>
                         </div>
                         <div class="form-group">
                             <label>Status</label>
@@ -60,7 +60,10 @@ $ngadu = mysqli_fetch_assoc($sql);
                         </div>
                         <?php if ($ngadu['status'] == 'selesai') { ?>
                             <hr>
-
+                            <div class="form-group">
+                                <label class="text-primary">Detail Aduan</label>
+                                <textarea type="text" disabled class="form-control" rows="4"><?= $ngadu['solusi'] ?></textarea>
+                            </div>
                         <?php } ?>
                     </div>
                     <!-- /.card-body -->

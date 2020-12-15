@@ -1,11 +1,11 @@
 <?php
 // koneksi dikantor
-$conn1 = mysqli_connect('10.3.10.227', 'user', 'view', 'mpninfo_v09');
-$conn2 = mysqli_connect('10.3.10.220', 'root', '', 'db304');
+// $conn1 = mysqli_connect('10.3.10.227', 'user', 'view', 'mpninfo_v09');
+// $conn2 = mysqli_connect('10.3.10.220', 'root', '', 'db304');
 
 // koneksi dilaptop
-// $conn1 = mysqli_connect('localhost', 'root', '', 'mpninfo_v09');
-// $conn2 = mysqli_connect('localhost', 'root', '', 'db304');
+$conn1 = mysqli_connect('localhost', 'root', '', 'mpninfo_v09');
+$conn2 = mysqli_connect('localhost', 'root', '', 'db304');
 
 function cekUser($user)
 {
@@ -22,12 +22,12 @@ function regAduan()
     $sql = mysqli_query($conn2, "SELECT * FROM tb_pengaduan ORDER BY id DESC");
     while ($aduan = mysqli_fetch_assoc($sql)) {
         echo '<tr>
-                        <td style="width: 10px">' . $aduan['register'] . '<br><span class="right badge badge-info">' . $aduan['status'] . '</span></td>
-                        <td style="width: 100px">' . $aduan['tgl'] . '</td>
-                        <td style="width: 200px">' . $aduan['nama'] . '<br><span class="right badge badge-danger">' . $aduan['seksi'] . '</span></td>
-                        <td>' . $aduan['detail_aduan'] . '</td>
-                        <td>' . $aduan['nama_pj'] . '</td>
-                 </tr>';
+                <td style="width: 10px">' . $aduan['register'] . '<br><span class="right badge badge-info">' . $aduan['status'] . '</span></td>
+                <td style="width: 100px">' . $aduan['tgl'] . '</td>
+                <td style="width: 200px">' . $aduan['nama'] . '<br><span class="right badge badge-danger">' . $aduan['seksi'] . '</span></td>
+                <td>' . $aduan['detail_aduan'] . '</td>
+                <td>' . $aduan['nama_pj'] . '</td>
+            </tr>';
     }
 }
 

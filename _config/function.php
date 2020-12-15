@@ -118,3 +118,41 @@ function inputLog($nip, $nama, $seksi, $kegiatan, $keterangan, $ipaddress)
     if (mysqli_query($conn2, $sql)) {
     };
 }
+
+// cek admin url
+function cekAdmin($seksi)
+{
+    if ($seksi != $_SESSION['Seksi PDI']) {
+        echo "<script>window.location='../stalker.php';</script>";
+    }
+}
+
+// get update
+function lastUpdate()
+{
+    global $conn2;
+    $sql = mysqli_query($conn2, "SELECT * FROM changelog ORDER BY id DESC LIMIT 1");
+    $upd = mysqli_fetch_assoc($sql);
+    echo $upd['versi'] . '<br>';
+    echo $upd['tgl'] . '<br>';
+    echo $upd['upd'] . '<br>';
+    echo $upd['detail'] . '<br>';
+    echo $upd['dev'] . '<br>';
+}
+
+//get history update
+function getVersi()
+{
+    global $conn2;
+    $sql = mysqli_query($conn2, "SELECT versi FROM changelog ORDER BY id DESC LIMIT 1");
+    $ver = mysqli_fetch_assoc($sql);
+    return $ver['versi'];
+}
+
+// print array
+function delok($data)
+{
+    echo "<pre>";
+    print_r($data);
+    echo "</pre>";
+}

@@ -111,26 +111,13 @@
             </li> -->
 
             <li class="nav-header">Other</li>
-            <!-- <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="nav-icon far fa-circle text-danger"></i>
-                  <p class="text">About</p>
-                </a>
-              </li> -->
+
             <li class="nav-item">
-              <a href="<?= base_url("log.php"); ?>" class="nav-link">
+              <a href="<?= base_url("p/admin.php"); ?>" class="nav-link">
                 <i class="nav-icon far fa-circle text-warning"></i>
-                <p>Log Update</p>
+                <p>Administrator</p>
               </a>
             </li>
-            <!-- <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="nav-icon far fa-circle text-info"></i>
-                  <p>#</p>
-                </a>
-              </li> -->
-
-
           </ul>
         </nav>
         <!-- /.sidebar-menu -->

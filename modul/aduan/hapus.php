@@ -9,5 +9,3 @@
     echo '<script language="javascript">';
     echo 'alert("Huweeeeeeeeee beneran dihapus dong !_!"); location.href="../aduan/"';
     echo '</script>';
-    
-?>
