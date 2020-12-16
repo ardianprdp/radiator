@@ -29,7 +29,8 @@ cekUser($_SESSION['seksi']);
             <!-- /.card-header -->
             <div class="card-body">
               <div id="accordion">
-                <!-- we are adding the .class so bootstrap.js collapse plugin detects it -->
+
+                <!-- Input Update Aplikasi -->
                 <div class="card card-primary">
                   <div class="card-header">
                     <h4 class="card-title">
@@ -83,6 +84,65 @@ cekUser($_SESSION['seksi']);
                     </div>
                   </div>
                 </div>
+                <!-- End Update Aplikasi -->
+
+                <!-- IP Pegawai  -->
+                <div class="card card-warning">
+                  <div class="card-header">
+                    <h4 class="card-title">
+                      <a data-toggle="collapse" data-parent="#accordion" href="#ipaddress">
+                        <span class="fa fa-server"></span> IP Address Pegawai
+                      </a>
+                    </h4>
+                  </div>
+                  <div id="ipaddress" class="panel-collapse collapse in">
+                    <div class="row">
+                      <!-- /.card-header -->
+                      <div class="card-body">
+                        <table id="iptable" class="table table-bordered table-hover">
+                          <thead>
+                            <tr>
+                              <th style="width:20px; text-align: center">No</th>
+                              <th style="text-align: center;">Seksi</th>
+                              <th style="text-align: center;">User</th>
+                              <th style="text-align: center;">IP Address</th>
+                              <th style="text-align: center;">Hostname / Nama PC</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr style="height: 5px">
+                              <td>1</td>
+                              <td>Internet
+                                Explorer 4.0
+                              </td>
+                              <td>Win 95+</td>
+                              <td>-</td>
+                              <td>-</td>
+                            </tr>
+                            <tr>
+                              <td>2</td>
+                              <td>PSP browser</td>
+                              <td>PSP</td>
+                              <td>-</td>
+                              <td>-</td>
+                            </tr>
+                            <tr>
+                              <td>3</td>
+                              <td>All others</td>
+                              <td>-</td>
+                              <td>-</td>
+                              <td>-</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <!-- /.card-body -->
+                    </div>
+                  </div>
+                </div>
+                <!-- End IP Pegawai -->
+
+                <!-- Import Data -->
                 <div class="card card-success">
                   <div class="card-header">
                     <h4 class="card-title">
@@ -107,6 +167,8 @@ cekUser($_SESSION['seksi']);
                     </div>
                   </div>
                 </div>
+                <!-- End Import Data -->
+
               </div>
             </div>
             <!-- /.card-body -->
