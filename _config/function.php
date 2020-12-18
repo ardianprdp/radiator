@@ -173,3 +173,17 @@ function cekUser($user)
         echo "<script>window.location='" . base_url('stalker.php') . "';</script>";
     }
 }
+
+function user($ip)
+{
+    global $conn2;
+
+    $sql = mysqli_query($conn2, "SELECT * FROM ipaddress WHERE ip = '$ip'");
+    $ipuser = mysqli_fetch_assoc($sql);
+
+    if ($ip == $ipuser['ip']) {
+        echo $ipuser['user'];
+    } else {
+        echo 'anda siapa?';
+    }
+}

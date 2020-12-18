@@ -296,6 +296,7 @@ include "_config/koneksi.php";
                 <!-- /.card-body -->
                 <div class="card-footer clearfix">
                   <a href="" class="btn btn-sm btn-info float-left">IP : <?= get_client_ip(); ?></a>
+                  <a href="" class="btn btn-sm btn-info float-left">IP : <?= user(get_client_ip()); ?></a>
 
                 </div>
                 <!-- /.card-footer -->
