@@ -61,7 +61,7 @@ $ngadu = mysqli_fetch_assoc($sql);
                         <?php if ($ngadu['status'] == 'selesai') { ?>
                             <hr>
                             <div class="form-group">
-                                <label class="text-primary">Detail Aduan</label>
+                                <label class="text-primary">Solusi Permasalahan</label>
                                 <textarea type="text" disabled class="form-control" rows="4"><?= $ngadu['solusi'] ?></textarea>
                             </div>
                         <?php } ?>

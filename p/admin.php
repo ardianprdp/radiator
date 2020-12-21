@@ -1,6 +1,7 @@
 <?php
 include_once('../_header.php');
 include_once('../_sidebar.php');
+include_once('../_config/function-admin.php');
 
 inputLog($_SESSION['nip'], $_SESSION['nama'], $_SESSION['seksi'], "OPEN", "BUKA MENU ADMIN", $_SERVER["REMOTE_ADDR"]);
 
@@ -20,6 +21,10 @@ cekUser($_SESSION['seksi']);
   <!-- Main content -->
   <section class="content">
     <div class="container-fluid">
+
+      <?php if(isset($_GET['ip']))  {
+        update_ip($_GET['ip'], $_GET['nama']); } ?>
+
       <div class="row">
         <div class="col-md-12">
           <div class="card">
@@ -103,36 +108,14 @@ cekUser($_SESSION['seksi']);
                           <thead>
                             <tr>
                               <th style="width:20px; text-align: center">No</th>
-                              <th style="text-align: center;">Seksi</th>
                               <th style="text-align: center;">User</th>
                               <th style="text-align: center;">IP Address</th>
                               <th style="text-align: center;">Hostname / Nama PC</th>
                             </tr>
                           </thead>
                           <tbody>
-                            <tr style="height: 5px">
-                              <td>1</td>
-                              <td>Internet
-                                Explorer 4.0
-                              </td>
-                              <td>Win 95+</td>
-                              <td>-</td>
-                              <td>-</td>
-                            </tr>
-                            <tr>
-                              <td>2</td>
-                              <td>PSP browser</td>
-                              <td>PSP</td>
-                              <td>-</td>
-                              <td>-</td>
-                            </tr>
-                            <tr>
-                              <td>3</td>
-                              <td>All others</td>
-                              <td>-</td>
-                              <td>-</td>
-                              <td>-</td>
-                            </tr>
+                            <?php tabel_ip(); ?>
+
                           </tbody>
                         </table>
                       </div>

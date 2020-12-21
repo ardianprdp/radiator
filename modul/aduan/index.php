@@ -94,13 +94,13 @@ $totAduan = mysqli_fetch_assoc($sql);
                 <li class="pt-2 px-3">
                   <h3 class="card-title">Aduan</h3>
                 </li>
-                <?php if($_SESSION['seksi'] =='Seksi PDI') { ?>
+                <?php if ($_SESSION['seksi'] == 'Seksi PDI') { ?>
                   <li class="nav-item">
                     <a class="nav-link" id="custom-tabs-two-home-tab" data-toggle="pill" href="#tabTindaklanjut" role="tab" aria-controls="tabTindaklanjut" aria-selected="true"><b class="text-danger">Tindaklanjuti</b> <span class="badge badge-danger"><?= $totAduan['open']; ?></span></a>
                   </li>
                 <?php } ?>
                 <li class="nav-item">
-                  <a class="nav-link active" id="custom-tabs-two-home-tab" data-toggle="pill" href="#tabAduan" role="tab" aria-controls="tabAduan" aria-selected="true">Open <span class="badge badge-danger"><?= $totAduan['open']; ?></span></a>
+                  <a class="nav-link active" id="custom-tabs-two-home-tab" data-toggle="pill" href="#tabAduan" role="tab" aria-controls="tabAduan" aria-selected="true">Open <span class="badge badge-primary"><?= $totAduan['open']; ?></span></a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" id="custom-tabs-two-profile-tab" data-toggle="pill" href="#tabProses" role="tab" aria-controls="tabProses" aria-selected="false">Proses <span class="badge badge-warning"><?= $totAduan['proses']; ?></span></a>
@@ -110,238 +110,246 @@ $totAduan = mysqli_fetch_assoc($sql);
                 </li>
               </ul>
             </div>
-            
+
             <div class="card-body p-0">
               <div class="tab-content" id="custom-tabs-two-tabContent">
                 <div class="tab-pane fade show" id="tabTindaklanjut" role="tabpanel" aria-labelledby="tabTindaklanjut-tab">
 
-                  <table class="table">
-                    <thead>
-                      <tr>
-                        <th style="width: 5px"></th>
-                        <th style="width: 100px">Register</th>
-                        <th style="width: 150px; text-align: center;">Kategori</th>
-                        <th style="text-align: center;">Detail Aduan</th>
-                        <th style="text-align: center;"></th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <?php
-                      $no = 1;
-                      $user = $_SESSION['nip'];
-                      $sql2 = mysqli_query($conn2, "SELECT * FROM tb_pengaduan WHERE status = 'open' ORDER BY id DESC");
-                      while ($a = mysqli_fetch_assoc($sql2)) {
-                      ?>
+                  <div class="card-body table-responsive p-0" style="height: 500px;">
+                    <table class="table table-head-fixed text-nowrap">
+                      <thead>
                         <tr>
-                          <td>
-                            <?php switch ($a['status']) {
-                              case "selesai":
-                                echo '<i class="fas fa-check"></i></a>';
-                                break;
-                              case "proses":
-                                echo '<i class="fas fa-spinner"></i></a>';
-                                break;
-                              default:
-                                echo '<i class="fas fa-minus"></i></a>';
-                            } ?>
-
-                          </td>
-                          <td>
-                            <?php if ($a['status'] == "selesai") {
-                              echo '<a style="text-decoration: underline;" href="aduan.php?id=' . $a["id"] . '">' . $a['register'] . '</a>';
-                            } else {
-                              echo $a['register'];
-                            } ?>
-                          </td>
-                          <td><?= $a['kategori'] ?></td>
-                          <td><?= $a['detail_aduan'] ?></td>
-                          <td class="text-right py-0 align-middle">
-                            <div class="btn-group btn-group-sm">
-                              <?php if ($a['status'] != "selesai") {
-                                echo '<a href="aduan.php?id=' . $a['id'] . '" class="btn btn-info"><i class="fas fa-edit"></i></a>';
-                              } ?>
-                              <?php if ($a['status'] == "open") {
-                                echo '<a href="hapus.php?id=' . $a['id'] . '" onclick="return checkDelete()" class="btn btn-danger" )><i class="fas fa-trash"></i></a>';
-                              } ?>
-                            </div>
-                          </td>
+                          <th style="width: 5px"></th>
+                          <th style="width: 100px">Register</th>
+                          <th style="width: 150px; text-align: center;">Kategori</th>
+                          <th style="text-align: center;">Detail Aduan</th>
+                          <th style="text-align: center;"></th>
                         </tr>
-                      <?php } ?>
-                    </tbody>
-                  </table>
+                      </thead>
+                      <tbody>
+                        <?php
+                        $no = 1;
+                        $user = $_SESSION['nip'];
+                        $sql2 = mysqli_query($conn2, "SELECT * FROM tb_pengaduan WHERE status = 'open' ORDER BY id DESC");
+                        while ($a = mysqli_fetch_assoc($sql2)) {
+                        ?>
+                          <tr>
+                            <td>
+                              <?php switch ($a['status']) {
+                                case "selesai":
+                                  echo '<i class="fas fa-check"></i></a>';
+                                  break;
+                                case "proses":
+                                  echo '<i class="fas fa-spinner"></i></a>';
+                                  break;
+                                default:
+                                  echo '<i class="fas fa-minus"></i></a>';
+                              } ?>
+
+                            </td>
+                            <td>
+                              <?php if ($a['status'] == "selesai") {
+                                echo '<a style="text-decoration: underline;" href="aduan.php?id=' . $a["id"] . '">' . $a['register'] . '</a>';
+                              } else {
+                                echo $a['register'];
+                              } ?>
+                            </td>
+                            <td><?= $a['kategori'] ?></td>
+                            <td><?= $a['detail_aduan'] ?></td>
+                            <td class="text-right py-0 align-middle">
+                              <div class="btn-group btn-group-sm">
+                                <?php if ($a['status'] != "selesai") {
+                                  echo '<a href="aduan.php?id=' . $a['id'] . '" class="btn btn-info"><i class="fas fa-edit"></i></a>';
+                                } ?>
+                                <?php if ($a['status'] == "open") {
+                                  echo '<a href="hapus.php?id=' . $a['id'] . '" onclick="return checkDelete()" class="btn btn-danger" )><i class="fas fa-trash"></i></a>';
+                                } ?>
+                              </div>
+                            </td>
+                          </tr>
+                        <?php } ?>
+                      </tbody>
+                    </table>
+                  </div>
 
 
                 </div>
                 <div class="tab-pane fade show active" id="tabAduan" role="tabpanel" aria-labelledby="tabAduan-tab">
 
-                  <table class="table">
-                    <thead>
-                      <tr>
-                        <th style="width: 5px"></th>
-                        <th style="width: 100px">Register</th>
-                        <th style="width: 150px; text-align: center;">Kategori</th>
-                        <th style="text-align: center;">Detail Aduan</th>
-                        <th style="text-align: center;"></th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <?php
-                      $no = 1;
-                      $user = $_SESSION['nip'];
-                      $sql2 = mysqli_query($conn2, "SELECT * FROM tb_pengaduan WHERE nip = '$user'  AND status = 'open' ORDER BY id DESC");
-                      while ($a = mysqli_fetch_assoc($sql2)) {
-                      ?>
+                  <div class="card-body table-responsive p-0" style="height: 500px;">
+                    <table class="table table-head-fixed text-nowrap">
+                      <thead>
                         <tr>
-                          <td>
-                            <?php switch ($a['status']) {
-                              case "selesai":
-                                echo '<i class="fas fa-check"></i></a>';
-                                break;
-                              case "proses":
-                                echo '<i class="fas fa-spinner"></i></a>';
-                                break;
-                              default:
-                                echo '<i class="fas fa-minus"></i></a>';
-                            } ?>
-
-                          </td>
-                          <td>
-                            <?php if ($a['status'] == "selesai") {
-                              echo '<a style="text-decoration: underline;" href="aduan.php?id=' . $a["id"] . '">' . $a['register'] . '</a>';
-                            } else {
-                              echo $a['register'];
-                            } ?>
-                          </td>
-                          <td><?= $a['kategori'] ?></td>
-                          <td><?= $a['detail_aduan'] ?></td>
-                          <td class="text-right py-0 align-middle">
-                            <div class="btn-group btn-group-sm">
-                              <?php if ($a['status'] != "selesai") {
-                                echo '<a href="aduan.php?id=' . $a['id'] . '" class="btn btn-info"><i class="fas fa-edit"></i></a>';
-                              } ?>
-                              <?php if ($a['status'] == "open") {
-                                echo '<a href="hapus.php?id=' . $a['id'] . '" onclick="return checkDelete()" class="btn btn-danger" )><i class="fas fa-trash"></i></a>';
-                              } ?>
-                            </div>
-                          </td>
+                          <th style="width: 5px"></th>
+                          <th style="width: 100px">Register</th>
+                          <th style="width: 150px; text-align: center;">Kategori</th>
+                          <th style="text-align: center;">Detail Aduan</th>
+                          <th style="text-align: center;"></th>
                         </tr>
-                      <?php } ?>
-                    </tbody>
-                  </table>
+                      </thead>
+                      <tbody>
+                        <?php
+                        $no = 1;
+                        $user = $_SESSION['nip'];
+                        $sql2 = mysqli_query($conn2, "SELECT * FROM tb_pengaduan WHERE nip = '$user'  AND status = 'open' ORDER BY id DESC");
+                        while ($a = mysqli_fetch_assoc($sql2)) {
+                        ?>
+                          <tr>
+                            <td>
+                              <?php switch ($a['status']) {
+                                case "selesai":
+                                  echo '<i class="fas fa-check"></i></a>';
+                                  break;
+                                case "proses":
+                                  echo '<i class="fas fa-spinner"></i></a>';
+                                  break;
+                                default:
+                                  echo '<i class="fas fa-minus"></i></a>';
+                              } ?>
+
+                            </td>
+                            <td>
+                              <?php if ($a['status'] == "selesai") {
+                                echo '<a style="text-decoration: underline;" href="aduan.php?id=' . $a["id"] . '">' . $a['register'] . '</a>';
+                              } else {
+                                echo $a['register'];
+                              } ?>
+                            </td>
+                            <td><?= $a['kategori'] ?></td>
+                            <td><?= $a['detail_aduan'] ?></td>
+                            <td class="text-right py-0 align-middle">
+                              <div class="btn-group btn-group-sm">
+                                <?php if ($a['status'] != "selesai") {
+                                  echo '<a href="aduan.php?id=' . $a['id'] . '" class="btn btn-info"><i class="fas fa-edit"></i></a>';
+                                } ?>
+                                <?php if ($a['status'] == "open") {
+                                  echo '<a href="hapus.php?id=' . $a['id'] . '" onclick="return checkDelete()" class="btn btn-danger" )><i class="fas fa-trash"></i></a>';
+                                } ?>
+                              </div>
+                            </td>
+                          </tr>
+                        <?php } ?>
+                      </tbody>
+                    </table>
+                  </div>
 
 
                 </div>
                 <div class="tab-pane fade" id="tabProses" role="tabpanel" aria-labelledby="tabProses-tab">
-                  <table class="table">
-                    <thead>
-                      <tr>
-                        <th style="width: 5px"></th>
-                        <th style="width: 100px">Register</th>
-                        <th style="width: 150px; text-align: center;">Kategori</th>
-                        <th style="text-align: center;">Detail Aduan</th>
-                        <th style="text-align: center;"></th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <?php
-                      $no = 1;
-                      $user = $_SESSION['nip'];
-                      $sql2 = mysqli_query($conn2, "SELECT * FROM tb_pengaduan WHERE nip = '$user' AND status = 'proses' ORDER BY id DESC");
-                      while ($a = mysqli_fetch_assoc($sql2)) {
-                      ?>
+                  <div class="card-body table-responsive p-0" style="height: 500px;">
+                    <table class="table table-head-fixed text-nowrap">
+                      <thead>
                         <tr>
-                          <td>
-                            <?php switch ($a['status']) {
-                              case "selesai":
-                                echo '<i class="fas fa-check"></i></a>';
-                                break;
-                              case "proses":
-                                echo '<i class="fas fa-spinner"></i></a>';
-                                break;
-                              default:
-                                echo '<i class="fas fa-minus"></i></a>';
-                            } ?>
-
-                          </td>
-                          <td>
-                            <?php if ($a['status'] == "selesai") {
-                              echo '<a style="text-decoration: underline;" href="aduan.php?id=' . $a["id"] . '">' . $a['register'] . '</a>';
-                            } else {
-                              echo $a['register'];
-                            } ?>
-                          </td>
-                          <td><?= $a['kategori'] ?></td>
-                          <td><?= $a['detail_aduan'] ?></td>
-                          <td class="text-right py-0 align-middle">
-                            <div class="btn-group btn-group-sm">
-                              <?php if ($a['status'] != "selesai") {
-                                echo '<a href="aduan.php?id=' . $a['id'] . '" class="btn btn-info"><i class="fas fa-edit"></i></a>';
-                              } ?>
-                              <?php if ($a['status'] == "open") {
-                                echo '<a href="hapus.php?id=' . $a['id'] . '" onclick="return checkDelete()" class="btn btn-danger" )><i class="fas fa-trash"></i></a>';
-                              } ?>
-                            </div>
-                          </td>
+                          <th style="width: 5px"></th>
+                          <th style="width: 100px">Register</th>
+                          <th style="width: 150px; text-align: center;">Kategori</th>
+                          <th style="text-align: center;">Detail Aduan</th>
+                          <th style="text-align: center;"></th>
                         </tr>
-                      <?php } ?>
-                    </tbody>
-                  </table>
+                      </thead>
+                      <tbody>
+                        <?php
+                        $no = 1;
+                        $user = $_SESSION['nip'];
+                        $sql2 = mysqli_query($conn2, "SELECT * FROM tb_pengaduan WHERE nip = '$user'  AND status = 'proses' ORDER BY id DESC");
+                        while ($a = mysqli_fetch_assoc($sql2)) {
+                        ?>
+                          <tr>
+                            <td>
+                              <?php switch ($a['status']) {
+                                case "selesai":
+                                  echo '<i class="fas fa-check"></i></a>';
+                                  break;
+                                case "proses":
+                                  echo '<i class="fas fa-spinner"></i></a>';
+                                  break;
+                                default:
+                                  echo '<i class="fas fa-minus"></i></a>';
+                              } ?>
+
+                            </td>
+                            <td>
+                              <?php if ($a['status'] == "selesai") {
+                                echo '<a style="text-decoration: underline;" href="aduan.php?id=' . $a["id"] . '">' . $a['register'] . '</a>';
+                              } else {
+                                echo $a['register'];
+                              } ?>
+                            </td>
+                            <td><?= $a['kategori'] ?></td>
+                            <td><?= $a['detail_aduan'] ?></td>
+                            <td class="text-right py-0 align-middle">
+                              <div class="btn-group btn-group-sm">
+                                <?php if ($a['status'] != "selesai") {
+                                  echo '<a href="aduan.php?id=' . $a['id'] . '" class="btn btn-info"><i class="fas fa-edit"></i></a>';
+                                } ?>
+                                <?php if ($a['status'] == "open") {
+                                  echo '<a href="hapus.php?id=' . $a['id'] . '" onclick="return checkDelete()" class="btn btn-danger" )><i class="fas fa-trash"></i></a>';
+                                } ?>
+                              </div>
+                            </td>
+                          </tr>
+                        <?php } ?>
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
                 <div class="tab-pane fade" id="tabSelesai" role="tabpanel" aria-labelledby="tabSelesai-tab">
-                  <table class="table">
-                    <thead>
-                      <tr>
-                        <th style="width: 5px"></th>
-                        <th style="width: 100px">Register</th>
-                        <th style="width: 150px; text-align: center;">Kategori</th>
-                        <th style="text-align: center;">Detail Aduan</th>
-                        <th style="text-align: center;"></th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <?php
-                      $no = 1;
-                      $user = $_SESSION['nip'];
-                      $sql2 = mysqli_query($conn2, "SELECT * FROM tb_pengaduan WHERE nip = '$user'  AND status = 'selesai' ORDER BY id DESC");
-                      while ($a = mysqli_fetch_assoc($sql2)) {
-                      ?>
+                  <div class="card-body table-responsive p-0" style="height: 500px;">
+                    <table class="table table-head-fixed text-nowrap">
+                      <thead>
                         <tr>
-                          <td>
-                            <?php switch ($a['status']) {
-                              case "selesai":
-                                echo '<i class="fas fa-check"></i></a>';
-                                break;
-                              case "proses":
-                                echo '<i class="fas fa-spinner"></i></a>';
-                                break;
-                              default:
-                                echo '<i class="fas fa-minus"></i></a>';
-                            } ?>
-
-                          </td>
-                          <td>
-                            <?php if ($a['status'] == "selesai") {
-                              echo '<a style="text-decoration: underline;" href="aduan.php?id=' . $a["id"] . '">' . $a['register'] . '</a>';
-                            } else {
-                              echo $a['register'];
-                            } ?>
-                          </td>
-                          <td><?= $a['kategori'] ?></td>
-                          <td><?= $a['detail_aduan'] ?></td>
-                          <td class="text-right py-0 align-middle">
-                            <div class="btn-group btn-group-sm">
-                              <?php if ($a['status'] != "selesai") {
-                                echo '<a href="aduan.php?id=' . $a['id'] . '" class="btn btn-info"><i class="fas fa-edit"></i></a>';
-                              } ?>
-                              <?php if ($a['status'] == "open") {
-                                echo '<a href="hapus.php?id=' . $a['id'] . '" onclick="return checkDelete()" class="btn btn-danger" )><i class="fas fa-trash"></i></a>';
-                              } ?>
-                            </div>
-                          </td>
+                          <th style="width: 5px"></th>
+                          <th style="width: 100px">Register</th>
+                          <th style="width: 150px; text-align: center;">Kategori</th>
+                          <th style="text-align: center;">Detail Aduan</th>
+                          <th style="text-align: center;"></th>
                         </tr>
-                      <?php } ?>
-                    </tbody>
-                  </table>
+                      </thead>
+                      <tbody>
+                        <?php
+                        $no = 1;
+                        $user = $_SESSION['nip'];
+                        $sql2 = mysqli_query($conn2, "SELECT * FROM tb_pengaduan WHERE nip = '$user'  AND status = 'selesai' ORDER BY id DESC");
+                        while ($a = mysqli_fetch_assoc($sql2)) {
+                        ?>
+                          <tr>
+                            <td>
+                              <?php switch ($a['status']) {
+                                case "selesai":
+                                  echo '<i class="fas fa-check"></i></a>';
+                                  break;
+                                case "proses":
+                                  echo '<i class="fas fa-spinner"></i></a>';
+                                  break;
+                                default:
+                                  echo '<i class="fas fa-minus"></i></a>';
+                              } ?>
+
+                            </td>
+                            <td>
+                              <?php if ($a['status'] == "selesai") {
+                                echo '<a style="text-decoration: underline;" href="aduan.php?id=' . $a["id"] . '">' . $a['register'] . '</a>';
+                              } else {
+                                echo $a['register'];
+                              } ?>
+                            </td>
+                            <td><?= $a['kategori'] ?></td>
+                            <td><?= $a['detail_aduan'] ?></td>
+                            <td class="text-right py-0 align-middle">
+                              <div class="btn-group btn-group-sm">
+                                <?php if ($a['status'] != "selesai") {
+                                  echo '<a href="aduan.php?id=' . $a['id'] . '" class="btn btn-info"><i class="fas fa-edit"></i></a>';
+                                } ?>
+                                <?php if ($a['status'] == "open") {
+                                  echo '<a href="hapus.php?id=' . $a['id'] . '" onclick="return checkDelete()" class="btn btn-danger" )><i class="fas fa-trash"></i></a>';
+                                } ?>
+                              </div>
+                            </td>
+                          </tr>
+                        <?php } ?>
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
               </div>
             </div>

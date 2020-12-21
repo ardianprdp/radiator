@@ -10,7 +10,7 @@
       <div class="container">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark"> Dashboard Pengawasan</h1>
+          <i><h1 class="m-0 text-dark"> Selamat datang, <?= $_SESSION['nama'] ;?></i></h1>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->

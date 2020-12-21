@@ -1,5 +1,5 @@
 <?php
-$conn2 = mysqli_connect('10.3.10.220', 'root', '', 'db304');
+// $conn2 = mysqli_connect('10.3.10.220', 'root', '', 'db304');
 
 $cmd = shell_exec('arp -a');
 $cmd = preg_split('/[\n]  /', $cmd);
@@ -31,3 +31,4 @@ print_r($output);
 print '</pre>';
 
 echo $output['open'];
+echo substr($_SERVER['PHP_SELF'], 10, 10);

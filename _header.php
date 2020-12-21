@@ -50,9 +50,9 @@ if (
           <!-- <li class="nav-item d-none d-sm-inline-block">
           <a href="#" class="nav-link">Link Website</a>
         </li> -->
-          <li class="nav-item d-none d-sm-inline-block">
+          <!-- <li class="nav-item d-none d-sm-inline-block">
             <a href="<?= base_url(); ?>/auth/logout.php" class="nav-link">Logout</a>
-          </li>
+          </li> -->
         </ul>
 
         <!-- <marquee behavior="scroll" direction="left">Penderitaan membuatku semakin kuat dan berkembang! ~ <i>anonim</i></marquee> -->
