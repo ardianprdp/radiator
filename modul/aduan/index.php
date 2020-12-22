@@ -116,7 +116,7 @@ $totAduan = mysqli_fetch_assoc($sql);
                 <div class="tab-pane fade show" id="tabTindaklanjut" role="tabpanel" aria-labelledby="tabTindaklanjut-tab">
 
                   <div class="card-body table-responsive p-0" style="height: 500px;">
-                    <table class="table table-head-fixed text-nowrap">
+       4            <table class="table table-head-fixed text-nowrap">
                       <thead>
                         <tr>
                           <th style="width: 5px"></th>
@@ -176,7 +176,7 @@ $totAduan = mysqli_fetch_assoc($sql);
                 </div>
                 <div class="tab-pane fade show active" id="tabAduan" role="tabpanel" aria-labelledby="tabAduan-tab">
 
-                  <div class="card-body table-responsive p-0" style="height: 500px;">
+                  <div class="card-body table-responsive p-0" style="height: 400px;">
                     <table class="table table-head-fixed text-nowrap">
                       <thead>
                         <tr>
@@ -236,7 +236,7 @@ $totAduan = mysqli_fetch_assoc($sql);
 
                 </div>
                 <div class="tab-pane fade" id="tabProses" role="tabpanel" aria-labelledby="tabProses-tab">
-                  <div class="card-body table-responsive p-0" style="height: 500px;">
+                  <div class="card-body table-responsive p-0" style="height: 400px;">
                     <table class="table table-head-fixed text-nowrap">
                       <thead>
                         <tr>
@@ -294,7 +294,7 @@ $totAduan = mysqli_fetch_assoc($sql);
                   </div>
                 </div>
                 <div class="tab-pane fade" id="tabSelesai" role="tabpanel" aria-labelledby="tabSelesai-tab">
-                  <div class="card-body table-responsive p-0" style="height: 500px;">
+                  <div class="card-body table-responsive p-0" style="height: 400px;">
                     <table class="table table-head-fixed text-nowrap">
                       <thead>
                         <tr>

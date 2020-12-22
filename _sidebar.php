@@ -24,7 +24,7 @@
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <!-- Add icons to the links using the .nav-icon class
                 with font-awesome or any other icon font library -->
-            <li class="nav-item has-treeview <?php sidebar(substr($_SERVER['PHP_SELF'], 10, 10)) ;?>">
+            <li class="nav-item has-treeview <?php sidebar(substr($_SERVER['PHP_SELF'], 10, 10)); ?>">
               <a href="<?= base_url('index.php') ?>" class="nav-link">
                 <i class="nav-icon fas fa-home"></i>
                 <p>
@@ -41,7 +41,7 @@
               </a>
             </li> -->
             <li class="nav-item has-treeview">
-              <a href="<?= base_url('modul/aduan/index.php') ?>" class="nav-link">
+              <a href="<?= base_url('modul/aduan/') ?>" class="nav-link">
                 <i class="nav-icon fas fa-bug"></i>
                 <p>
                   Aduan
@@ -49,6 +49,14 @@
               </a>
             </li>
 
+            <li class="nav-item has-treeview">
+              <a href="<?= base_url('modul/pengawasan/') ?>" class="nav-link">
+                <i class="nav-icon fas fa-file-archive"></i>
+                <p>
+                  Pengawasan
+                </p>
+              </a>
+            </li>
             <!-- <li class="nav-item has-treeview">
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -100,14 +108,6 @@
                   </ul>
                 </li>
               </ul>
-            </li> -->
-            <!-- <li class="nav-item has-treeview">
-              <a href="<?= base_url('penagihan/index.php') ?>" class="nav-link">
-                <i class="nav-icon fas fa-file-archive"></i>
-                <p>
-                  Arsip
-                </p>
-              </a>
             </li> -->
 
             <li class="nav-header">Other</li>

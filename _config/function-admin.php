@@ -1,11 +1,11 @@
 <?php
 // koneksi dikantor
-// $conn1 = mysqli_connect('10.3.10.227', 'user', 'view', 'mpninfo_v09');
-// $conn2 = mysqli_connect('10.3.10.220', 'root', '', 'db304');
+$conn1 = mysqli_connect('10.3.10.227', 'user', 'view', 'mpninfo_v09');
+$conn2 = mysqli_connect('10.3.10.220', 'root', '', 'db304');
 
 // koneksi dilaptop
-$conn1 = mysqli_connect('localhost', 'root', '', 'mpninfo_v09');
-$conn2 = mysqli_connect('localhost', 'root', '', 'db304');
+// $conn1 = mysqli_connect('localhost', 'root', '', 'mpninfo_v09');
+// $conn2 = mysqli_connect('localhost', 'root', '', 'db304');
 
 // ----------------------------------------------------------------------------------------------------
 
@@ -26,7 +26,7 @@ function tabel_ip()
                     tahun = 2020
                     ORDER BY a.seksi, a.jabatan, a.nip";
     $query  =   mysqli_query($conn2, $sql);
-    
+
     while ($ip = mysqli_fetch_assoc($query)) {
 
         echo '<tr>
@@ -54,6 +54,7 @@ function update_ip($nip, $nama)
                                     WHERE
                                         a.tahun = 2020 
                                         AND a.nip = '$nip'");
+    $query2 = mysqli_query($conn2, "SELECT * FROM ipaddress WHERE nip = '$nip'");
 
     if ($user = mysqli_fetch_assoc($query)) {
         echo '
@@ -65,32 +66,33 @@ function update_ip($nip, $nama)
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form class="form-horizontal">
+                        <form role="form" method="post" action="ipaddress-update.php">
                         <div class="card-body">
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">User</label>
                                 <div class="col-sm-3">
-                                    <input type="text" class="form-control" value="'. $nip .'">
+                                    <input type="text" name="nip" class="form-control" value="' . $nip . '">
                                 </div>
                                 <div class="col-sm-7">
-                                    <input type="text" class="form-control" value="'. $nama .'">
+                                    <input type="text" name="nama" class="form-control" value="' . $nama . '">
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">IP Address</label>
                                 <div class="col-sm-3">
-                                <input type="text" class="form-control" value="'. $user['ip'] .'">
+                                <input type="text" name="ipaddress" class="form-control" value="' . $user['ip'] . '">
                                 </div>
                                 <label class="col-sm-2 col-form-label" style="text-align: right">Hostname</label>
                                 <div class="col-sm-5">
-                                    <input type="email" class="form-control" value="'. $user['hostname'] .'">
+                                    <input type="text" name="hostname" class="form-control" value="' . $user['hostname'] . '">
                                 </div>
                             </div>
                         </div>
                         <!-- /.card-body -->
                         <div class="card-footer">
-                            <button type="submit" class="btn btn-danger float-right">Simpan</button>
+                            <button type="submit" name="update" class="btn btn-danger float-right">Update</button>
+                            <button type="submit" name="simpan" class="btn btn-danger float-right">Tambah</button>
                         </div>
                         <!-- /.card-footer -->
                         </form>

@@ -1,17 +1,17 @@
 <?php
 // koneksi dikantor
-// $conn1 = mysqli_connect('10.3.10.227', 'user', 'view', 'mpninfo_v09');
-// $conn2 = mysqli_connect('10.3.10.220', 'root', '', 'db304');
+$conn1 = mysqli_connect('10.3.10.227', 'user', 'view', 'mpninfo_v09');
+$conn2 = mysqli_connect('10.3.10.220', 'root', '', 'db304');
 
 // koneksi dikantor
-$conn1 = mysqli_connect('localhost', 'root', '', 'mpninfo_v09');
-$conn2 = mysqli_connect('localhost', 'root', '', 'db304');
+// $conn1 = mysqli_connect('localhost', 'root', '', 'mpninfo_v09');
+// $conn2 = mysqli_connect('localhost', 'root', '', 'db304');
 
 // fungsi base url
 function base_url($url = null)
 {
-    // $base_url = "http://10.3.10.220/radiator";
-    $base_url = "http://localhost/radiator";
+    $base_url = "http://10.3.10.220/radiator";
+    // $base_url = "http://localhost/radiator";
     if ($url != null) {
         return $base_url . "/" . $url;
     } else {

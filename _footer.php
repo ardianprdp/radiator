@@ -138,6 +138,7 @@
           <!-- /.timeline -->
           <div class="modal-footer justify-content-between">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <a href="<?= base_url('auth/logout.php') ;?>" type="button" class="btn btn-default" >Close Session</a>
           </div>
         </div>
       </div>
